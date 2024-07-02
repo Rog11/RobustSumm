@@ -1,113 +1,129 @@
 import Image from "next/image";
+import Navbar from "./navbar";
+import CodeSnippet from "./CodeSnippet";
+import Link from "next/link";
+import CopyButton from "./CopyButton";
 
 export default function Home() {
+  const code = `
+  from textattack import Attack
+  from textattack.constraints.overlap import MaxWordsPerturbed
+  from textattack.constraints.pre_transformation import (
+      RepeatModification,
+      StopwordModification,
+  )
+  from textattack.constraints.semantics.sentence_encoders import UniversalSentenceEncoder
+  from textattack.goal_functions import UntargetedClassification
+  from textattack.search_methods import GreedyWordSwapWIR
+  from textattack.transformations import WordSwapMaskedLM
+  
+  from .attack_recipe import AttackRecipe
+  
+  
+  class BERTAttackLi2020(AttackRecipe):
+      """Li, L.., Ma, R., Guo, Q., Xiangyang, X., Xipeng, Q. (2020).
+  
+      BERT-ATTACK: Adversarial Attack Against BERT Using BERT
+  
+      https://arxiv.org/abs/2004.09984
+  
+      This is "attack mode" 1 from the paper, BAE-R, word replacement.
+      """
+  
+      @staticmethod
+      def build(model_wrapper):
+          # [from correspondence with the author]
+          # Candidate size K is set to 48 for all data-sets.
+          transformation = WordSwapMaskedLM(method="bert-attack", max_candidates=48)
+          #
+          # Don't modify the same word twice or stopwords.
+          #
+          constraints = [RepeatModification(), StopwordModification()]
+          constraints.append(MaxWordsPerturbed(max_percent=0.4))
+  
+          # "As used in TextFooler (Jin et al., 2019), we also use Universal Sentence
+          # Encoder (Cer et al., 2018) to measure the semantic consistency between the
+          # adversarial sample and the original sequence. To balance between semantic
+          # preservation and attack success rate, we set up a threshold of semantic
+          # similarity score to filter the less similar examples."
+
+          # Since the threshold in the real world can't be determined from the training
+          # data, the TextAttack implementation uses a fixed threshold - determined to
+          # be 0.2 to be most fair.
+          use_constraint = UniversalSentenceEncoder(
+              threshold=0.2,
+              metric="cosine",
+              compare_against_original=True,
+              window_size=None,
+          )
+          constraints.append(use_constraint)
+
+          search_method = GreedyWordSwapWIR(wir_method="unk")
+  
+          return Attack(goal_function, constraints, transformation, search_method)`;
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="bg-gray-200">
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="px-60 py-15 text-5xl font-bold text-gray-800">
+          Attacks Against Text Summarization Models through Lead Bias and
+          Influence Functions
+        </h1>
+        <h2 className="mt-4 text-2xl">Sentence Exclusion attack example:</h2>
+        <div className="mt-8 flex justify-center space-x-4">
+          <Link href="/recipes">
+            <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              See Recipes
+            </button>
+          </Link>
+          <Link href="/how-it-works">
+            <button className="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-md shadow hover:bg-gray-400">
+              How it works? <span aria-hidden="true">→</span>
+            </button>
+          </Link>
+        </div>
+        <div className="px-60 mt-12 text-left">
+          <h2 className="text-3xl font-bold text-gray-800">Sample:</h2>
+          <CopyButton code={code} />
+          <CodeSnippet code={code} language="python" />
+        </div>
+        <div className="px-60 container mx-auto p-4">
+          <h1 className="text-3xl font-bold mb-4">Q&A Section</h1>
+          <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-xl font-medium">
+              How is this different from TextAttack
+            </div>
+            <div className="collapse-content">
+              <p>
+                SummaryAttack is targeted towards Text Summarization. We
+                introduce a novel approach by exploiting the inherent lead bias
+                in summarization models, to perform adversarial perturbations.
+              </p>
+            </div>
+          </div>
+          <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-xl font-medium">
+              More Details on results
+            </div>
+            <div className="collapse-content">
+              <p>
+                Check the paper for further details on benchmark and performance
+              </p>
+            </div>
+          </div>
+          <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-xl font-medium">
+              How to cite SummaryAttack
+            </div>
+            <div className="collapse-content">
+              <p>Main paper:</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
