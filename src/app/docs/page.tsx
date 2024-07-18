@@ -6,9 +6,9 @@ import ColabLink from "../ColabLink";
 
 const features = [
   {
-    name: "Push to deploy",
+    name: "Perturbations",
     description: "Use google colab to test and run the attacks",
-    link: "/docs",
+    link: "/perturbations",
   },
   {
     name: "How it works",
@@ -16,16 +16,16 @@ const features = [
       "Discover the magic behind summary attack, how the framework works",
     link: "/how-it-works",
   },
-  {
-    name: "About us",
-    description: "Meet our team",
-    link: "/docs",
-  },
-  {
-    name: "Performance",
-    description: "Read the paper to understand benchmakrs & performance",
-    link: "/docs",
-  },
+  // {
+  // name: "About us",
+  //   description: "Meet our team",
+  //   link: "/docs",
+  // },
+  // {
+  //   name: "Performance",
+  //   description: "Read the paper to understand benchmakrs & performance",
+  //   link: "/docs",
+  // },
 ];
 
 const Docs: React.FC = () => {
@@ -47,32 +47,21 @@ const Docs: React.FC = () => {
         </p>
 
         <h2 className="mt-4 ext-2xl font-bold mb-4">Installation</h2>
-        <div className="mockup-code">
+        <div className="mockup-code text-xs">
           <pre data-prefix="$">
-            <code>git clone https:github.com/summary-attack</code>
+            <code>pip install -e .</code>
           </pre>
         </div>
-        <h2 className="mt-4 ext-2xl font-bold mb-4">Inference Model</h2>
-        <div className="mockup-code">
+        <h2 className="mt-4 ext-2xl font-bold mb-4"> Command structure</h2>
+        <div className="mockup-code text-xs">
           <pre data-prefix="$">
-            <code>Inference code here</code>
+            <code>
+              summarization_robustness --model MODEL_NAME --dataset DATASET_NAME
+              --split SPLIT --size SIZE --perturbation PERTURBATION_TYPE
+            </code>
           </pre>
         </div>
-        <p className="mt-4">
-          For more usage examples, please refer to the example notebook.
-        </p>
 
-        {/* <ColabLink /> */}
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <a
-            href="https://colab.research.google.com/github/QData/TextAttack/blob/master/docs/2notebook/Example_0_tensorflow.ipynb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Open in google colab
-          </a>
-        </div>
         <div>
           <h2 className="mt-4 ext-2xl font-bold mb-4">Threat Model</h2>
           <p>
@@ -89,19 +78,6 @@ const Docs: React.FC = () => {
             platform depends on a summarization model to generate summaries from
             aticles sourced from various channels, including foreign news
             outlets, blogs, and social media.
-          </p>
-          <h2 className="mt-4 ext-2xl font-bold mb-4">Datasets</h2>
-          <p>
-            Datasets: As we focus on different perturbations ranging from
-            characters to documents, we consider datasets specific to the task
-            of multi-document text summarization. To finetune a pretrained model
-            for the task of multi document summarization, we used the Multi-News
-            dataset (Fabbri et al., 2019). This dataset consists of 44,972
-            training document clusters, which includes news articles and human
-            402 written summaries of these articles from the site newser.com.
-            The number of source documents per cluster varies from 2 to 10. The
-            dataset is split into training (80%), validation (10%), and test
-            (10%), which is available on Huggingface (Fabbri et al.,2019).{" "}
           </p>
           <h2 className="mt-4 ext-2xl font-bold mb-4">Evaluation</h2>
           <p>

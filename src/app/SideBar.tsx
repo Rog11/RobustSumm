@@ -22,10 +22,19 @@ const SideBar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/recipes" legacyBehavior>
-                <button className={getButtonClass("/recipes")}>Recipes</button>
+              <Link href="/perturbations" legacyBehavior>
+                <button className={getButtonClass("/perturbations")}>
+                  Perturbations
+                </button>
               </Link>
             </li>
+            {/* <li>
+              <Link href="/dataset" legacyBehavior>
+                <button className={getButtonClass("/dataset")}>
+                  Attack Methodology
+                </button>
+              </Link>
+            </li> */}
             <li>
               <Link href="/how-it-works" legacyBehavior>
                 <button className={getButtonClass("/how-it-works")}>

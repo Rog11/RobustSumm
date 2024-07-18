@@ -3,68 +3,11 @@ import Link from "next/link";
 import SideBar from "../SideBar";
 import Image from "next/image";
 
-const How: React.FC = () => {
+const Dataset: React.FC = () => {
   return (
     <div className="px-60 flex">
       <SideBar />
       <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-4">
-          Framework of Adversarial Perturbations
-        </h1>
-        <Image
-          src="/images/framework.jpg"
-          alt="Framework of adversarial Perturbations"
-          className="mt-4"
-          width={1200}
-          height={900}
-        />
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Adversarial Perturbations Formalization
-        </h2>
-        <p className="text-base text-gray-600 mb-6">
-          Initially, an attacker can finetune a pre-trained model on publicly
-          available multi-document datasets and generate summaries. This step is
-          crucial for identifying the model’s susceptibility to lead and
-          document ordering biases. By analyzing these summaries and comparing
-          them with sections of original documents using cosine similarity,
-          attackers can confirm the presence of lead bias. Upon confirming these
-          biases, attackers can extract initial sentences of the initial
-          documents to apply perturbations.
-        </p>
-
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          Adversarial Perturbations Formalization
-        </h2>
-        <p className="text-base text-gray-600 mb-6">
-          For a set of documents &#123; D1, D2, ..., Dk &#125;, where each Di
-          consists of sentences &#123;si1, si2, ..., sin &#125;, we specifically
-          target the lead sentences of the first document, Dlead = &#123;s11,
-          s12, ..., s1m &#125;, with m being a small number, such as 2 or 3.
-          This targeted approach stems from the hypothesis that alterations in
-          the lead sentences of the first document can disproportionately
-          influence the overall summary.
-        </p>
-
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-4">
-          Identification of important tokens:
-        </h2>
-        <p className="text-base text-gray-600 mb-6">
-          In character and word level, we employ TF-IDF to determine the
-          important words within Dlead. Instead of applying adversarial
-          perturbations to all the important words in the set, we match the
-          words present in sentences of summary and filter them to apply
-          perturbations. This set of selected words is denoted as Wimp. Our
-          adversarial strategy involves applying a perturbation function p to
-          Wimp. This function p(w) is designed to apply perturbations across
-          characters and words in the set of Wimp, encompassing insertions,
-          deletions, or homoglyph, synonym replacements while adhering to the
-          constraint of minimal perturbation. At the sentence level, p(w) is
-          designed to apply perturbations across Dlead, encompassing replacement
-          with paraphrases and homoglyphs and re-ordering. At the document level
-          p(w) is designed to apply perturbations across D1 by changing the
-          document’s location from top to bottom. The application of p(w) to
-          Dlead results in a perturbed version, D ′ lead.
-        </p>
         <h1 className="text-3xl font-bold mb-4">
           Influence Functions for Data Poisoning
         </h1>
@@ -152,4 +95,4 @@ const How: React.FC = () => {
   );
 };
 
-export default How;
+export default Dataset;
