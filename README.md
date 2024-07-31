@@ -1,6 +1,9 @@
 # Setup
 
-Download the server in the same directory as the command-line argument
+1. Download the server in the same directory as the command-line argument
+2. Install dependencies:
+
+`pip install Flask flask-cors`
 
 # Run
 
