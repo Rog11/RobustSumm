@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <Link href="/">
-          <button className="btn btn-ghost text-xl ml-2">SummaryAttack</button>
+          <button className="btn btn-ghost text-xl ml-2">Robustsumm</button>
         </Link>
       </div>
       <div className="navbar-end flex items-center">

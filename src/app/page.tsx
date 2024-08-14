@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import CodeSnippet from "./CodeSnippet";
 import Link from "next/link";
 import CopyButton from "./CopyButton";
@@ -112,7 +112,7 @@ export default function Home() {
                 </tr>
                 <tr className="bg-gray-50">
                   <td
-                    colSpan="2"
+                    colSpan={2}
                     className="border border-gray-200 px-4 py-2 font-semibold"
                   >
                     Perturbation Types
@@ -233,8 +233,8 @@ export default function Home() {
             </div>
             <div className="collapse-content">
               <p>
-                Summary-attack is a novel approach by exploiting the inherent
-                lead bias in summarization models, to perform adversarial
+                Robustsumm is a novel approach by exploiting the inherent lead
+                bias in summarization models, to perform adversarial
                 perturbations
               </p>
             </div>
@@ -258,7 +258,7 @@ export default function Home() {
           <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
             <input type="checkbox" className="peer" />
             <div className="collapse-title text-xl font-medium">
-              How to cite SummaryAttack
+              How to cite Robustsumm
             </div>
             <div className="collapse-content">
               <p>Main paper:</p>
