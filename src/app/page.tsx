@@ -47,7 +47,7 @@ export default function Home() {
         </div>
         <div className="px-60 mt-12 text-left">
           <h2 className="text-3xl font-bold text-gray-800">
-            Characters swapping example:
+            Character swapping example:
           </h2>
           <CopyButton code={code2} />
           <div className="mockup-code text-xs mt-2">
