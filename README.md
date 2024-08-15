@@ -19,13 +19,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 For styling, [tailwindcss](https://tailwindcss.com/) was utilized. 
 
 # Backend
-Written in python, with the flask framework, since it would be serving the command line demo in the /demo page.
-
-Server can be deployed using
-
-```
-python3 server.py
-```
-
+See backend branch for detailed instructions
 
 
