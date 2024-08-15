@@ -27,51 +27,10 @@ export default function Demo() {
   });
   const [loading, setLoading] = useState(false);
 
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     setLoading(true);
-  //     try {
-  //       const res = await fetch(
-  //         "http://localhost:5000/predict",
-  //         // "https://flask-app-otyhwwprha-uc.a.run.app/predict",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             model,
-  //             dataset,
-  //             split,
-  //             size,
-  //             perturbation,
-  //           })
-  //         }
-  //       );
-
-  //       if (!res.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-
-  //       const data = await res.json();
-  //       console.log("Response Data:", data);
-  //       if (Array.isArray(data) && data.length > 0) {
-  //         setResponse(data[0]);
-  //       } else {
-  //         console.error("Unexpected data format:", data);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    // Create the payload to send to the server
     const payload = {
       model,
       dataset,
@@ -80,17 +39,20 @@ export default function Demo() {
       perturbation,
     };
 
-    // Log the payload to the console
     console.log("Sending payload to server:", payload);
 
     try {
-      const res = await fetch("http://localhost:5000/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        // "http://localhost:5000/predict",
+        "https://flask-app-otyhwwprha-uc.a.run.app/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!res.ok) {
         throw new Error(`Network response was not ok: ${res.statusText}`);
@@ -99,7 +61,6 @@ export default function Demo() {
       const data = await res.json();
       console.log("Response Data:", data);
 
-      // Handle the response data
       if (Array.isArray(data) && data.length > 0) {
         setResponse(data[0]);
       } else {
