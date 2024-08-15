@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
             />
           </svg>
         </button>
-        <Link href="https://github.com/QData/TextAttack/tree/master/textattack/attack_recipes">
+        <Link href="https://github.com/Rog11/RobustSumm">
           <button className="btn btn-ghost btn-circle">
             <FaGithub className="h-5 w-5" />
           </button>
