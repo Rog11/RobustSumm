@@ -5,7 +5,7 @@
 3. Run the follwoing command: 
 `pip install Flask flask-cors`
 
-Installation has been completed at this point, now to start the server.
+Installation has been completed at this point, now you can start the server.
 
 # Start server
 run `python3 server.py`
