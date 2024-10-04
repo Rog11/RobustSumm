@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
               />
             </svg>
           </div>
-          <ul
+          {/* <ul
             tabIndex={0}
             className="menu menu-xl dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
             <li>
               <Link href="/demo">Demo</Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <Link href="/">
           <button className="btn btn-ghost text-xl ml-2">Robustsumm</button>
