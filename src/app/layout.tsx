@@ -17,8 +17,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <head>
+        <script
+          // Avoid theme flash by setting data-theme before hydration.
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    let theme = localStorage.getItem('theme');
+    if (theme !== 'light' && theme !== 'dark') {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
+  } catch (_) {}
+})();`,
+          }}
+        />
+      </head>
+      <body className={`${inter.className} min-h-screen bg-base-100 text-base-content`}>
         <Navbar />
         {children}
         <Footer />

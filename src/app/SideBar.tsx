@@ -8,24 +8,25 @@ const SideBar = () => {
 
   const getButtonClass = (path: string) =>
     pathname === path
-      ? "block w-full py-2 px-4 text-blue-600 font-semibold"
-      : "block w-full py-2 px-4 text-gray-800 hover:text-blue-600 font-semibold";
+      ? "btn btn-ghost btn-sm justify-start w-full text-primary"
+      : "btn btn-ghost btn-sm justify-start w-full";
 
   return (
     <div>
-      <aside className="w-64 p-4  border-r border-gray-300">
+      <aside className="w-64 p-4 border-r border-base-300">
         <nav>
           <ul>
             <li>
-              <Link href="/docs" legacyBehavior>
-                <button className={getButtonClass("/docs")}>Get Started</button>
+              <Link href="/docs" className={getButtonClass("/docs")}>
+                Get Started
               </Link>
             </li>
             <li>
-              <Link href="/perturbations" legacyBehavior>
-                <button className={getButtonClass("/perturbations")}>
-                  Perturbations
-                </button>
+              <Link
+                href="/perturbations"
+                className={getButtonClass("/perturbations")}
+              >
+                Perturbations
               </Link>
             </li>
             {/* <li>
@@ -36,10 +37,11 @@ const SideBar = () => {
               </Link>
             </li> */}
             <li>
-              <Link href="/how-it-works" legacyBehavior>
-                <button className={getButtonClass("/how-it-works")}>
-                  How it works
-                </button>
+              <Link
+                href="/how-it-works"
+                className={getButtonClass("/how-it-works")}
+              >
+                How it works
               </Link>
             </li>
           </ul>

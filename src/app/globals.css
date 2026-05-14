@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism's default theme is light; make blocks legible in dark mode too. */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: hsl(var(--bc));
+}
+
+html[data-theme="dark"] pre[class*="language-"] {
+  background: hsl(var(--b2));
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

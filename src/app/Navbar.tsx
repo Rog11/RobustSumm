@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar: React.FC = () => {
   return (
@@ -42,6 +45,7 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="navbar-end flex items-center">
+        <ThemeToggle />
         <button className="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"

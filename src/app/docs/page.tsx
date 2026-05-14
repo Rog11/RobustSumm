@@ -1,8 +1,6 @@
 // pages/docs.tsx
 import Link from "next/link";
 import SideBar from "../SideBar";
-import ColabEmbed from "../ColabLink";
-import ColabLink from "../ColabLink";
 
 const features = [
   {
@@ -30,13 +28,13 @@ const features = [
 
 const Docs: React.FC = () => {
   return (
-    <div className="px-60 flex">
+    <div className="px-4 sm:px-8 lg:px-16 xl:px-60 flex">
       <SideBar />
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-4">
           Get Started with Summary attack
         </h1>
-        <p className="text-gray-700">
+        <p className="opacity-80">
           Summary attack is a python framework for adversarial attacks in text
           summarization. With evolution of deep learning, more sophisticated
           abstractive methods emerged, particularly those based on the
@@ -46,13 +44,13 @@ const Docs: React.FC = () => {
           documents incorrectly.
         </p>
 
-        <h2 className="mt-4 ext-2xl font-bold mb-4">Installation</h2>
+        <h2 className="mt-4 text-2xl font-bold mb-4">Installation</h2>
         <div className="mockup-code text-xs">
           <pre data-prefix="$">
             <code>pip install -e .</code>
           </pre>
         </div>
-        <h2 className="mt-4 ext-2xl font-bold mb-4"> Command structure</h2>
+        <h2 className="mt-4 text-2xl font-bold mb-4">Command structure</h2>
         <div className="mockup-code text-xs">
           <pre data-prefix="$">
             <code>
@@ -63,7 +61,7 @@ const Docs: React.FC = () => {
         </div>
 
         <div>
-          <h2 className="mt-4 ext-2xl font-bold mb-4">Threat Model</h2>
+          <h2 className="mt-4 text-2xl font-bold mb-4">Threat Model</h2>
           <p>
             Adversarial Perturbations: As a wide number of Text Summarization
             models are publicly available, adversaries can have a motivation to
@@ -79,7 +77,7 @@ const Docs: React.FC = () => {
             aticles sourced from various channels, including foreign news
             outlets, blogs, and social media.
           </p>
-          <h2 className="mt-4 ext-2xl font-bold mb-4">Evaluation</h2>
+          <h2 className="mt-4 text-2xl font-bold mb-4">Evaluation</h2>
           <p>
             Lead bias has been reported in text summarization models using LLM
             models (Zhu et al., 2021). We also tested BART-Iarge, T5, and
@@ -96,7 +94,7 @@ const Docs: React.FC = () => {
             are highly sensitive to subtle textual manipula- tions, with
             BART-Large being the most sensitive, then T5-Small, and Pegasus.
           </p>
-          <h3 className="mt-4 ext-1xl font-bold mb-4">
+          <h3 className="mt-4 text-xl font-bold mb-4">
             Word Level Perturbations:{" "}
           </h3>
           <p>
@@ -112,7 +110,7 @@ const Docs: React.FC = () => {
             chatbots are more robust to word-level perturbations compared to
             baseline models.
           </p>
-          <h3 className="mt-4 ext-1xl font-bold mb-4">
+          <h3 className="mt-4 text-xl font-bold mb-4">
             Sentence Level Perturbations:{" "}
           </h3>
           <p>
@@ -134,11 +132,11 @@ const Docs: React.FC = () => {
                 {features.map((feature) => (
                   <Link href={feature.link} key={feature.name} passHref>
                     <div className="relative pl-16 cursor-pointer">
-                      <dt className="text-base font-semibold leading-7 text-gray-900">
-                        <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"></div>
+                      <dt className="text-base font-semibold leading-7">
+                        <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-primary"></div>
                         {feature.name}
                       </dt>
-                      <dd className="mt-2 text-base leading-7 text-gray-600">
+                      <dd className="mt-2 text-base leading-7 opacity-80">
                         {feature.description}
                       </dd>
                     </div>

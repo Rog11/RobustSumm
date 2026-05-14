@@ -16,7 +16,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ code, language }) => {
 
   return (
     <pre
-      className={`language-${language} bg-gray-100 p-4 rounded-lg shadow-md`}
+      className={`language-${language} bg-base-200 text-base-content p-4 rounded-lg shadow-md`}
     >
       <code className={`language-${language}`}>{code}</code>
     </pre>

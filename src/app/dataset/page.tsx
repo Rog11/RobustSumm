@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Dataset: React.FC = () => {
   return (
-    <div className="px-60 flex">
+    <div className="px-4 sm:px-8 lg:px-16 xl:px-60 flex">
       <SideBar />
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-4">
@@ -23,11 +23,11 @@ const Dataset: React.FC = () => {
           width={500}
           height={800}
         />
-        <p className="text-base text-gray-600 mb-6">
+        <p className="text-base opacity-80 mb-6">
           Illustration of poisoning attack using influence functions
         </p>
 
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        <h3 className="text-xl font-semibold mb-2">
           Initual setup
         </h3>
         <p>
@@ -36,7 +36,7 @@ const Dataset: React.FC = () => {
           The pre-trained LLM can be finetuned using this benign 360 dataset and
           run on the test set to observe its original summarization behavior.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Utilization of Influence Functions
         </h3>
         <p>
@@ -44,7 +44,7 @@ const Dataset: React.FC = () => {
           concept of Influence Functions, which quantify the impact of training
           data points on the model’s predictions.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Generation of poisoned data
         </h3>
         <p>
@@ -52,7 +52,7 @@ const Dataset: React.FC = () => {
           attack and alter the summaries by creating a contrastive version or
           toxic version.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Model retraining
         </h3>
         <p>
@@ -60,14 +60,14 @@ const Dataset: React.FC = () => {
           dataset, updating its parameters to adapt to the characteristics
           embedded within the poisoned dataset.
         </p>
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-5">Datasets</h2>
+        <h2 className="text-2xl font-bold mb-4 mt-5">Datasets</h2>
         <ul className="list-disc pl-5 mb-3">
           <li>
             <a
               href="https://github.com/Alex-Fabbri/Multi-News"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600 hover:text-blue-800"
+              className="link link-primary"
             >
               Multi-News dataset
             </a>
@@ -80,7 +80,7 @@ const Dataset: React.FC = () => {
               href="https://huggingface.co/datasets/yaolu/multi_x_science_sum"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600 hover:text-blue-800"
+              className="link link-primary"
             >
               Multi-XScience dataset
             </a>

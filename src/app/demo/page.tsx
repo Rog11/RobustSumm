@@ -87,7 +87,7 @@ export default function Demo() {
       <h1 className="text-3xl font-bold mb-4">Perturbation Demo</h1>
       <div className="flex flex-wrap justify-between mb-6">
         <div className="mb-4 w-full sm:w-1/5 ml-0.5">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium opacity-80">
             Model
           </label>
           <select
@@ -104,7 +104,7 @@ export default function Demo() {
           </select>
         </div>
         <div className="mb-4 w-full sm:w-1/5">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium opacity-80">
             Dataset
           </label>
           <select
@@ -120,7 +120,7 @@ export default function Demo() {
           </select>
         </div>
         <div className="mb-4 w-full sm:w-1/5">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium opacity-80">
             Split
           </label>
           <select
@@ -135,7 +135,7 @@ export default function Demo() {
           </select>
         </div>
         <div className="mb-4 w-full sm:w-1/5">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium opacity-80">
             Size
           </label>
           <input
@@ -147,7 +147,7 @@ export default function Demo() {
           />
         </div>
         <div className="mb-4 w-full sm:w-1/5">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium opacity-80">
             Perturbation
           </label>
           <select
@@ -185,44 +185,44 @@ export default function Demo() {
         </form>
       </div>
 
-      <div className="container mx-auto bg-slate-200 rounded-xl shadow-md mt-8">
+      <div className="container mx-auto bg-base-200 rounded-xl shadow-md mt-8">
         <div className="p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Results</h2>
+          <h2 className="text-2xl font-bold mb-4">Results</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="text-xl font-semibold text-gray-800">
+            <div className="bg-base-100 rounded-xl shadow-md p-4">
+              <h3 className="text-xl font-semibold">
                 Original Document
               </h3>
               <textarea
-                className="w-full h-40 mt-2 p-2 border rounded"
+                className="textarea textarea-bordered w-full h-40 mt-2"
                 value={response.original_document}
                 readOnly
               />
-              <h3 className="text-xl font-semibold text-gray-800 mt-4">
+              <h3 className="text-xl font-semibold mt-4">
                 Original Summary
               </h3>
               <textarea
-                className="w-full h-40 mt-2 p-2 border rounded"
+                className="textarea textarea-bordered w-full h-40 mt-2"
                 value={response.original_summary}
                 readOnly
               />
             </div>
 
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="text-xl font-semibold text-gray-800">
+            <div className="bg-base-100 rounded-xl shadow-md p-4">
+              <h3 className="text-xl font-semibold">
                 Perturbed Document
               </h3>
               <textarea
-                className="w-full h-40 mt-2 p-2 border rounded"
+                className="textarea textarea-bordered w-full h-40 mt-2"
                 value={response.perturbed_document}
                 readOnly
               />
-              <h3 className="text-xl font-semibold text-gray-800 mt-4">
+              <h3 className="text-xl font-semibold mt-4">
                 Perturbed Summary
               </h3>
               <textarea
-                className="w-full h-40 mt-2 p-2 border rounded"
+                className="textarea textarea-bordered w-full h-40 mt-2"
                 value={response.new_summary}
                 readOnly
               />
@@ -230,27 +230,27 @@ export default function Demo() {
           </div>
 
           <div className="mt-8">
-            <h3 className="text-xl font-semibold text-gray-800">
+            <h3 className="text-xl font-semibold">
               Original Element
             </h3>
-            <p className="text-gray-700">
+            <p className="opacity-80">
               {response.original_element || "N/A"}
             </p>
-            <h3 className="text-xl font-semibold text-gray-800 mt-4">
+            <h3 className="text-xl font-semibold mt-4">
               Perturbed Element
             </h3>
-            <p className="text-gray-700">
+            <p className="opacity-80">
               {response.perturbed_element || "N/A"}
             </p>
           </div>
 
           <div className="mt-8">
-            <h3 className="text-xl font-semibold text-gray-800">
+            <h3 className="text-xl font-semibold">
               ROUGE Scores
             </h3>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="text-lg font-semibold text-gray-700">
+                <h4 className="text-lg font-semibold opacity-80">
                   Original
                 </h4>
                 <progress
@@ -258,7 +258,7 @@ export default function Demo() {
                   value={originalRougeScores.rouge1 * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-1: {(originalRougeScores.rouge1 * 100).toFixed(2)}%
                 </p>
                 <progress
@@ -266,7 +266,7 @@ export default function Demo() {
                   value={originalRougeScores.rouge2 * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-2: {(originalRougeScores.rouge2 * 100).toFixed(2)}%
                 </p>
                 <progress
@@ -274,13 +274,13 @@ export default function Demo() {
                   value={originalRougeScores.rougeL * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-L: {(originalRougeScores.rougeL * 100).toFixed(2)}%
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-gray-700">
+                <h4 className="text-lg font-semibold opacity-80">
                   Perturbed
                 </h4>
                 <progress
@@ -288,7 +288,7 @@ export default function Demo() {
                   value={perturbedRougeScores.rouge1 * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-1: {(perturbedRougeScores.rouge1 * 100).toFixed(2)}%
                 </p>
                 <progress
@@ -296,7 +296,7 @@ export default function Demo() {
                   value={perturbedRougeScores.rouge2 * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-2: {(perturbedRougeScores.rouge2 * 100).toFixed(2)}%
                 </p>
                 <progress
@@ -304,7 +304,7 @@ export default function Demo() {
                   value={perturbedRougeScores.rougeL * 100}
                   max="100"
                 ></progress>
-                <p className="text-gray-700">
+                <p className="opacity-80">
                   ROUGE-L: {(perturbedRougeScores.rougeL * 100).toFixed(2)}%
                 </p>
               </div>

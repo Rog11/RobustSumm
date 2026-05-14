@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Navbar from "./Navbar";
 import CodeSnippet from "./CodeSnippet";
 import Link from "next/link";
 import CopyButton from "./CopyButton";
@@ -36,27 +35,27 @@ export default function Home() {
   // )
 
   return (
-    <div className="bg-white-50">
+    <div className="bg-base-100">
       <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="px-60 py-15 text-5xl font-bold text-gray-800">
+        <h1 className="max-w-5xl mx-auto text-5xl font-bold">
           Attacks Against Text Summarization Models through Lead Bias and
           Influence Functions
         </h1>
-        <h2 className="mt-4 text-2xl">Adversarial Perturbations:</h2>
+        <h2 className="mt-4 text-2xl opacity-80">Adversarial Perturbations:</h2>
         <div className="mt-8 flex justify-center space-x-4">
           <Link href="/perturbations">
-            <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button className="btn btn-primary">
               See Perturbations
             </button>
           </Link>
           <Link href="/how-it-works">
-            <button className="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-md shadow hover:bg-gray-400">
+            <button className="btn btn-ghost">
               How it works? <span aria-hidden="true">→</span>
             </button>
           </Link>
         </div>
-        <div className="px-60 mt-12 text-left">
-          <h2 className="text-3xl font-bold text-gray-800">
+        <div className="max-w-5xl mx-auto mt-12 text-left">
+          <h2 className="text-3xl font-bold">
             Character swapping example:
           </h2>
           <CopyButton code={code2} />
@@ -72,147 +71,116 @@ export default function Home() {
 
           {/* <CodeSnippet code={code2} language="cmd" /> */}
           <div className="overflow-x-auto mt-4">
-            <table className="table-auto w-full text-left border-collapse border border-gray-200">
+            <table className="table table-zebra w-full text-left">
               {/* Table Head */}
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-200 px-4 py-2">Option</th>
-                  <th className="border border-gray-200 px-4 py-2">
-                    Description
-                  </th>
+                <tr>
+                  <th>Option</th>
+                  <th>Description</th>
                 </tr>
               </thead>
               {/* Table Body */}
               <tbody>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">--model</td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>--model</td>
+                  <td>
                     Hugging Face model identifier (e.g.,
                     'facebook/bart-large-cnn')
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    --dataset
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>--dataset</td>
+                  <td>
                     Dataset name ('alexfabbri/multi_news' or
                     'yaolu/multi_x_science_sum')
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">--split</td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>--split</td>
+                  <td>
                     Dataset split to use ('train', 'validation', or 'test')
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">--size</td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>--size</td>
+                  <td>
                     Number of examples to process
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    --perturbation
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>--perturbation</td>
+                  <td>
                     Type of perturbation to apply
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td
-                    colSpan={2}
-                    className="border border-gray-200 px-4 py-2 font-semibold"
-                  >
+                <tr>
+                  <td colSpan={2} className="font-semibold">
                     Perturbation Types
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    character_swap
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>character_swap</td>
+                  <td>
                     Swap two adjacent characters
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    character_delete
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>character_delete</td>
+                  <td>
                     Delete a random character
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    character_insert
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>character_insert</td>
+                  <td>
                     Insert a random character
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    character_replace
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>character_replace</td>
+                  <td>
                     Replace a character with a random one
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    character_repeat
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>character_repeat</td>
+                  <td>
                     Repeat a random character
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    word_delete
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>word_delete</td>
+                  <td>
                     Delete a word
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    word_synonym
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>word_synonym</td>
+                  <td>
                     Replace a word with its synonym
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    word_homograph
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>word_homograph</td>
+                  <td>
                     Replace a word with a homograph
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    sentence_paraphrase
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>sentence_paraphrase</td>
+                  <td>
                     Paraphrase a sentence
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-2">
-                    sentence_reorder
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                <tr>
+                  <td>sentence_reorder</td>
+                  <td>
                     Reorder words in a sentence
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-200 px-4 py-2">
-                    document_reorder
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2">
+                  <td>document_reorder</td>
+                  <td>
                     Reorder sentences in a document
                   </td>
                 </tr>
@@ -220,7 +188,7 @@ export default function Home() {
             </table>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-800 mt-4">
+          <h2 className="text-3xl font-bold mt-4">
             Sample of character level perturbation:
           </h2>
           <CopyButton code={code} />
@@ -234,7 +202,7 @@ export default function Home() {
             height={900}
           /> */}
         </div>
-        <div className="px-60 container mx-auto p-4">
+        <div className="max-w-5xl mx-auto p-4">
           <h1 className="text-3xl font-bold mb-4">Q&A Section</h1>
           <div className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
             <input type="checkbox" className="peer" />

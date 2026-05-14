@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const How: React.FC = () => {
   return (
-    <div className="px-60 flex">
+    <div className="px-4 sm:px-8 lg:px-16 xl:px-60 flex">
       <SideBar />
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-4">
@@ -18,10 +18,10 @@ const How: React.FC = () => {
           width={1200}
           height={900}
         />
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        <h2 className="text-2xl font-bold mb-2">
           Adversarial Perturbations Formalization
         </h2>
-        <p className="text-base text-gray-600 mb-6">
+        <p className="text-base opacity-80 mb-6">
           Initially, an attacker can finetune a pre-trained model on publicly
           available multi-document datasets and generate summaries. This step is
           crucial for identifying the model’s susceptibility to lead and
@@ -32,10 +32,10 @@ const How: React.FC = () => {
           documents to apply perturbations.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        <h2 className="text-2xl font-bold mb-2">
           Adversarial Perturbations Formalization
         </h2>
-        <p className="text-base text-gray-600 mb-6">
+        <p className="text-base opacity-80 mb-6">
           For a set of documents &#123; D1, D2, ..., Dk &#125;, where each Di
           consists of sentences &#123;si1, si2, ..., sin &#125;, we specifically
           target the lead sentences of the first document, Dlead = &#123;s11,
@@ -45,10 +45,10 @@ const How: React.FC = () => {
           influence the overall summary.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-4">
+        <h2 className="text-2xl font-bold mb-2 mt-4">
           Identification of important tokens:
         </h2>
-        <p className="text-base text-gray-600 mb-6">
+        <p className="text-base opacity-80 mb-6">
           In character and word level, we employ TF-IDF to determine the
           important words within Dlead. Instead of applying adversarial
           perturbations to all the important words in the set, we match the
@@ -80,11 +80,11 @@ const How: React.FC = () => {
           width={500}
           height={800}
         />
-        <p className="text-base text-gray-600 mb-6">
+        <p className="text-base opacity-80 mb-6">
           Illustration of poisoning attack using influence functions
         </p>
 
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        <h3 className="text-xl font-semibold mb-2">
           Initual setup
         </h3>
         <p>
@@ -93,7 +93,7 @@ const How: React.FC = () => {
           The pre-trained LLM can be finetuned using this benign 360 dataset and
           run on the test set to observe its original summarization behavior.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Utilization of Influence Functions
         </h3>
         <p>
@@ -101,7 +101,7 @@ const How: React.FC = () => {
           concept of Influence Functions, which quantify the impact of training
           data points on the model’s predictions.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Generation of poisoned data
         </h3>
         <p>
@@ -109,7 +109,7 @@ const How: React.FC = () => {
           attack and alter the summaries by creating a contrastive version or
           toxic version.
         </p>
-        <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2">
+        <h3 className="text-xl font-semibold mt-4">
           Model retraining
         </h3>
         <p>
@@ -117,14 +117,14 @@ const How: React.FC = () => {
           dataset, updating its parameters to adapt to the characteristics
           embedded within the poisoned dataset.
         </p>
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-5">Datasets</h2>
+        <h2 className="text-2xl font-bold mb-4 mt-5">Datasets</h2>
         <ul className="list-disc pl-5 mb-3">
           <li>
             <a
               href="https://github.com/Alex-Fabbri/Multi-News"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600 hover:text-blue-800"
+              className="link link-primary"
             >
               Multi-News dataset
             </a>
@@ -137,7 +137,7 @@ const How: React.FC = () => {
               href="https://huggingface.co/datasets/yaolu/multi_x_science_sum"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-blue-600 hover:text-blue-800"
+              className="link link-primary"
             >
               Multi-XScience dataset
             </a>

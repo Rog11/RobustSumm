@@ -8,7 +8,7 @@ const Recipe: React.FC = () => {
   const code = ``;
 
   return (
-    <div className="px-60 flex">
+    <div className="px-4 sm:px-8 lg:px-16 xl:px-60 flex">
       <SideBar />
       <div className="flex-1 p-8 ">
         <h1 className="text-3xl font-bold mb-4">Perturbations</h1>
@@ -26,7 +26,7 @@ const Recipe: React.FC = () => {
         {/* <CodeSnippet code={code} language="python" /> */}
         {/* </div> */}
         <div className="container mx-auto p-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl font-bold mb-4">
             Character Level
           </h2>
           <p>
@@ -34,7 +34,7 @@ const Recipe: React.FC = () => {
             can be used to simulate common typo errors and input noise that can
             occur in real-world scenarios.
           </p>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Charater swap
           </h3>
           <div className="mockup-code text-xs">
@@ -46,7 +46,7 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Charater Delete
           </h3>
           <div className="mockup-code text-xs">
@@ -58,7 +58,7 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Charater Replace
           </h3>
           <div className="mockup-code text-xs">
@@ -70,7 +70,7 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Charater Insert
           </h3>
           <div className="mockup-code text-xs">
@@ -82,7 +82,7 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Charater Repeat
           </h3>
           <div className="mockup-code text-xs">
@@ -94,14 +94,14 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-6">
+          <h2 className="text-2xl font-bold mb-2 mt-6">
             Word Level
           </h2>
           <p>
             Just like the character level, it simulates common typo errors and
             input noise that can occur in real-world scenarios.
           </p>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Word Delete
           </h3>
           <div className="mockup-code text-xs">
@@ -113,7 +113,7 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mt-4 b-2 pl-4">
+          <h3 className="text-xl font-semibold mt-4 pl-4">
             Word Synonym
           </h3>
           <div className="mockup-code text-xs">
@@ -125,10 +125,10 @@ const Recipe: React.FC = () => {
               </code>
             </pre>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-6">
+          <h2 className="text-2xl font-bold mb-2 mt-6">
             Replacement with Homoglyphs
           </h2>
-          <p className="text-base text-gray-600 mb-6">
+          <p className="text-base opacity-80 mb-6">
             Homoglyphs are visually similar characters/ words that are less
             noticeable to human readers and can be used for deceptive purposes.
             To assess the models’ performance, one character or word at a time
@@ -144,10 +144,10 @@ const Recipe: React.FC = () => {
             </pre>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-6">
+          <h2 className="text-2xl font-bold mb-2 mt-6">
             Sentence/Document Reordering
           </h2>
-          <p className="text-base text-gray-600 mb-6">
+          <p className="text-base opacity-80 mb-6">
             In natural language, the order of sentences and paragraphs is
             important as they account for understanding the context. This can be
             disrupted due to formatting issues or intentional manipulation. We
@@ -166,10 +166,10 @@ const Recipe: React.FC = () => {
             </pre>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-6">
+          <h2 className="text-2xl font-bold mb-2 mt-6">
             Sentence Paraphrasing
           </h2>
-          <p className="text-base text-gray-600 mb-6 mt-2">
+          <p className="text-base opacity-80 mb-6 mt-2">
             Paraphrasing is a common phenomenon in natural language, and models
             should be able to handle paraphrased expressions while capturing the
             core meaning. With this perturbation, we test the models’ ability to
@@ -186,10 +186,10 @@ const Recipe: React.FC = () => {
             </pre>
           </div>
 
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-6">
+          <h2 className="text-2xl font-bold mb-2 mt-6">
             Replacement of original sentences
           </h2>
-          <p className="text-base text-gray-600 mb-6">
+          <p className="text-base opacity-80 mb-6">
             Once these perturbations are executed at the character, word, and
             sentence level, we replace the original sentences with the sentences
             containing them. In case of document perturbations, we just
